@@ -1,17 +1,55 @@
 import mongoose from 'mongoose'
 
-const carScheme = mongoose.Schema({
-    make: String,
-    model:String,
-    year: String,
-    miles: String,
-    color: String,
-    drive_type: String,
-    new: Boolean,
-    country: String
+const carScheme = mongoose.Schema(
+    {
+        make: String,
+        model:String,
+        year: String,
+        miles: String,
+        color: String,
+        drive_type: String,
+        new: Boolean,
+        country: String
     },
     {
         collection:"car"
+    }
+)
+
+const likesScheme = mongoose.Schema(
+    {
+        user_id: Number,
+        car_id: Number,
+    },
+    {
+        collection:"likes"
+    }
+)
+
+const trucksScheme = mongoose.Schema(
+    {
+        make: String,
+        model:String,
+        year: String,
+        miles: String,
+        color: String,
+        drive_type: String,
+        new: Boolean,
+        country: String
+    },
+    {
+        collection:"trucks"
+    }
+)
+
+const userScheme = mongoose.Schema(
+    {
+        user_id: Number,
+        user_name: String,
+        user_password: String,
+    },
+    {
+        collection:"user"   
     }
 )
 
@@ -25,7 +63,7 @@ async function ConnectDatabase(){
 
 async function getCarModel(){
     if(mongoose.connection.readyState != 1){
-        throw new Error("Model is not coectd")
+        throw new Error("Model is not connected")
     }
     return Car
 }
