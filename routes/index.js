@@ -9,10 +9,10 @@ const router = Router()
 router.use('/api-docs',swaggerUi.serve)
 router.get('/api-docs', swaggerUi.setup(swaggerDocument))
 
-router.use("/trucks",)
+router.use("/truck",)
 router.use("/user",)
 //not sure likes will work like this, likes could be a feature of users. 
-router.use("/likes",)
+router.use("/suv",)
 router.use("/car",)
 
 router.get("/login",passport.authenticate('github'),(req,res)=>{})

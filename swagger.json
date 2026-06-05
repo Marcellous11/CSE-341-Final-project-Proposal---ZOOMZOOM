@@ -8,7 +8,7 @@
   "host": "movies-and-users-api.onrender.com",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/api-docs": {
@@ -41,5 +41,8 @@
         }
       }
     }
-  }
+  },
+  "schemas": [
+    "https"
+  ]
 }

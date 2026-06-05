@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const carScheme = mongoose.Schema(
+const vehicleSchema = mongoose.Schema(
     {
         make: String,
         model:String,
@@ -11,49 +11,21 @@ const carScheme = mongoose.Schema(
         new: Boolean,
         country: String
     },
-    {
-        collection:"car"
-    }
+
 )
 
-const likesScheme = mongoose.Schema(
-    {
-        user_id: Number,
-        car_id: Number,
-    },
-    {
-        collection:"likes"
-    }
-)
-
-const trucksScheme = mongoose.Schema(
-    {
-        make: String,
-        model:String,
-        year: String,
-        miles: String,
-        color: String,
-        drive_type: String,
-        new: Boolean,
-        country: String
-    },
-    {
-        collection:"trucks"
-    }
-)
-
-const userScheme = mongoose.Schema(
+const userSchema = mongoose.Schema(
     {
         user_id: Number,
         user_name: String,
         user_password: String,
-    },
-    {
-        collection:"user"   
     }
 )
 
-const Car = mongoose.model("car",carScheme)
+const Car = mongoose.model("car",vehicleSchema)
+const Truck = mongoose.model("truck",vehicleSchema)
+const Suv = mongoose.model("suv",vehicleSchema)
+const User = mongoose.model("user",userSchema)
 
 async function ConnectDatabase(){
     await mongoose.connect(process.env.MONGOOSE_URI)
