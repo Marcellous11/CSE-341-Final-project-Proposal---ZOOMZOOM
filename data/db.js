@@ -39,9 +39,27 @@ async function getCarModel(){
     }
     return Car
 }
+async function getTruckModel(){
+    if(mongoose.connection.readyState != 1){
+        throw new Error("Model is not connected")
+    }
+    return Truck
+}
+async function getSuvModel(){
+    if(mongoose.connection.readyState != 1){
+        throw new Error("Model is not connected")
+    }
+    return Suv
+}
+async function getUserModel(){
+    if(mongoose.connection.readyState != 1){
+        throw new Error("Model is not connected")
+    }
+    return User
+}
 
 async function closeDatabase(){
    await mongoose.disconnect()
 }
 
-export {ConnectDatabase,getCarModel,closeDatabase}
+export {ConnectDatabase,getCarModel,closeDatabase,getTruckModel,getSuvModel,getUserModel}
