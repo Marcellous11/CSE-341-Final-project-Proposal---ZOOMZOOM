@@ -15,9 +15,9 @@
 
 const carValidationRules = () => {
   return [
-    body('make').notEmpty().withMessage("First name is required"),
-    body('model').notEmpty().withMessage("Last name is required"),
-    body('year').isEmail().withMessage("Email is required"),
+    body('make').notEmpty().withMessage("Make is required"),
+    body('model').notEmpty().withMessage("Model is required"),
+    body('year').notEmpty().withMessage("Year is required"),
   ]
 }
 
