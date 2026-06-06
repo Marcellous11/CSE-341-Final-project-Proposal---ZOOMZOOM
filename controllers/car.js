@@ -58,7 +58,7 @@ const updateCar = async (req, res) => {
         if (response) {
             res.status(204).send()
         } else {
-            res.stauts(404).json('This car is not found in the database, so it cannot be updated.')
+            res.status(404).json('This car is not found in the database, so it cannot be updated.')
         }
     } catch (err) {
         res.status(500).json(response.err || 'Some error occurred while updating the Car.')
