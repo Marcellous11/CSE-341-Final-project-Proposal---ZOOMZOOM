@@ -5,7 +5,7 @@
     "description": "An API that gives users access to 4 different vehicle types.",
     "version": "1.0.0"
   },
-  "host": "movies-and-users-api.onrender.com",
+  "host": "https://cse-341-final-project-proposal-zoomzoom.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
@@ -37,6 +37,90 @@
         "responses": {
           "default": {
             "description": ""
+          }
+        }
+      }
+    },
+    "/car/": {
+      "post": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "make": {
+                  "example": "any"
+                },
+                "model": {
+                  "example": "any"
+                },
+                "year": {
+                  "example": "any"
+                },
+                "miles": {
+                  "example": "any"
+                },
+                "color": {
+                  "example": "any"
+                },
+                "drive_type": {
+                  "example": "any"
+                },
+                "new": {
+                  "example": "any"
+                },
+                "country": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/car/{id}": {
+      "delete": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
