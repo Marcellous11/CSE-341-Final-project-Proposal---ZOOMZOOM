@@ -35,7 +35,7 @@ async function deleteCar(req,res,next){
 try {
     const carId = new ObjectId(req.params.id);
 
-    const carModel = await getMovieModel();
+    const carModel = await getCarModel();
 
     const response = await carModel.deleteOne({ _id: carId });
 
