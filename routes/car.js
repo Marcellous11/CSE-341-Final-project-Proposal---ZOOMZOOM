@@ -1,12 +1,20 @@
-import { Router } from 'express'
-const router = Router()
+import { Router } from "express";
+import {validate,carValidationRules} from '../middleware/validator.js'
+import {
+  addCar,
+  deleteCar,
+  getAllCars,
+  getOneCar,
+  updateCar
+} from "../controllers/car.js";
+import {isAthenicated} from '../middleware/authenicate.js'
 
-import carController from '../controllers/car.js'
+const carRoutes = Router();
 
-router.get("/", carController.getAllCars)
+carRoutes.get("/", getAllCars)
+carRoutes.get("/:id", getOneCar)
+carRoutes.put("/:id", isAthenicated, carValidationRules(), validate, updateCar)
+carRoutes.post("/",isAthenicated, carValidationRules(),validate,addCar);
+carRoutes.delete("/:id", isAthenicated, deleteCar);
 
-router.get("/:id", carController.getOneCar)
-
-router.put("/:id", carController.updateCar)
-
-export default router
+export { carRoutes };

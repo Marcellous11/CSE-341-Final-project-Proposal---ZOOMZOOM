@@ -5,7 +5,7 @@
     "description": "An API that gives users access to 4 different vehicle types.",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "cse-341-final-project-proposal-zoomzoom.onrender.com",
   "basePath": "/",
   "schemes": [
     "http"
@@ -87,6 +87,7 @@
         }
       },
       "put": {
+      "post": {
         "tags": [
           "Cars"
         ],
@@ -138,6 +139,41 @@
           },
           "400": {
             "description": "Bad Request"
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/car/{id}": {
+      "delete": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
