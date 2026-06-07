@@ -1,5 +1,6 @@
 import {Router} from 'express'
 import {carRoutes} from './car.js'
+import {truckRoutes} from './truck.js'
 import swaggerUi from 'swagger-ui-express'
 import swaggerDocument from '../swagger.json' with {type:"json"}
 import passport from 'passport'
@@ -17,6 +18,7 @@ router.get('/api-docs', swaggerUi.setup(swaggerDocument))
 //router.use("/user", userRouter)
 //router.use("/suv", suvRouter)
 router.use("/car",carRoutes)
+router.use("/truck",truckRoutes)
 
 router.get("/login",passport.authenticate('github'),(req,res)=>{})
 
