@@ -5,10 +5,10 @@
     "description": "An API that gives users access to 4 different vehicle types.",
     "version": "1.0.0"
   },
-  "host": "cse-341-final-project-proposal-zoomzoom.onrender.com",
+  "host": "cse-341-final-project-proposal-zoomzoom-iy13.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api-docs": {
@@ -58,6 +58,61 @@
             "description": "Bad Request"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "make": {
+                  "example": "any"
+                },
+                "model": {
+                  "example": "any"
+                },
+                "year": {
+                  "example": "any"
+                },
+                "miles": {
+                  "example": "any"
+                },
+                "color": {
+                  "example": "any"
+                },
+                "drive_type": {
+                  "example": "any"
+                },
+                "new": {
+                  "example": "any"
+                },
+                "country": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/car/{id}": {
@@ -83,11 +138,13 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       },
       "put": {
-      "post": {
         "tags": [
           "Cars"
         ],
@@ -139,22 +196,12 @@
           },
           "400": {
             "description": "Bad Request"
-          "201": {
-            "description": "Created"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "422": {
-            "description": "Unprocessable Entity"
           },
           "500": {
             "description": "Internal Server Error"
           }
         }
-      }
-    },
-    "/car/{id}": {
+      },
       "delete": {
         "tags": [
           "Cars"

@@ -5,7 +5,7 @@ const doc = {
         title : "Zoom Zoom",
         description: "An API that gives users access to 4 different vehicle types."
     },
-    host: "cse-341-final-project-proposal-zoomzoom.onrender.com",
+    host: "cse-341-final-project-proposal-zoomzoom-iy13.onrender.com",
     schemes: ["https"]
 }
 
