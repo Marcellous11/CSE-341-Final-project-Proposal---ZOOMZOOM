@@ -22,7 +22,7 @@ async function getOneCar(req, res) {
         if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
             return res.status(400).json('Must use a valid ID.')
         }
-        const carModel = getCarModel()
+        const carModel = await getCarModel()
         const car = await carModel.findById(req.params.id)
 
         if (!car) {
@@ -43,7 +43,7 @@ async function updateCar(req, res) {
         if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
             return res.status(400).json('Must use a valid ID.')
         }
-        const carModel = getCarModel()
+        const carModel = await getCarModel()
         const car = {
             make: req.body.make,
             model: req.body.model,
