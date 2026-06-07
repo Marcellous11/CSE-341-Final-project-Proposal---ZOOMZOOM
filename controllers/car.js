@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import { getCarModel } from "../data/db.js";
 import {ObjectId} from 'mongodb'
 
-const getAllCars = async (req, res) => {
+async function getAllCars(req, res) {
     //#swagger.tags=['Cars']
     try {
         const carModel = getCarModel()
@@ -14,7 +14,7 @@ const getAllCars = async (req, res) => {
     }
 }
 
-const getOneCar = async (req, res) => {
+async function getOneCar(req, res) {
     //#swagger.tags=['Cars']
     try {
         if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -35,7 +35,7 @@ const getOneCar = async (req, res) => {
         
 }
 
-const updateCar = async (req, res) => {
+async function updateCar(req, res) {
     //#swagger.tags=['Cars']
     try {
         if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -62,7 +62,7 @@ const updateCar = async (req, res) => {
             res.status(404).json('This car is not found in the database, so it cannot be updated.')
         }
     } catch (err) {
-        res.status(500).json(response.err || 'Some error occurred while updating the Car.')
+        res.status(500).json(err.message || 'Some error occurred while updating the Car.')
     }
 }
 
