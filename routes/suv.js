@@ -9,7 +9,7 @@ import { isAthenicated } from '../middleware/authenicate.js'
 
 const suvRoutes = Router();
 
-suvRoutes.get("/", getAllSuv);
+suvRoutes.get("/", getAllSuvs);
 suvRoutes.post("/", addSuv);
 suvRoutes.delete("/:id", deleteSuv);
 

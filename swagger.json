@@ -426,10 +426,19 @@
     },
     "/suv/": {
       "get": {
+        "tags": [
+          "SUVs"
+        ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
