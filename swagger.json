@@ -425,9 +425,17 @@
       }
     },
     "/suv/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
       "post": {
         "tags": [
-          "Suv"
+          "SUVs"
         ],
         "description": "",
         "parameters": [
@@ -478,7 +486,7 @@
     "/suv/{id}": {
       "delete": {
         "tags": [
-          "Suv"
+          "SUVs"
         ],
         "description": "",
         "parameters": [

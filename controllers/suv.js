@@ -2,8 +2,20 @@ import mongoose from 'mongoose'
 import { getSuvModel } from "../data/db.js";
 import {ObjectId} from 'mongodb'
 
+async function getAllSuvs(req, res) {
+    //#swagger.tags=['SUVs']
+    try {
+        const suvModel = await getSuvModel()
+        const suvs = await suvModel.find()
+        res.setHeader('Content-Type', 'application/json')
+        res.status(200).json(suvs)
+    } catch (err) {
+        res.status(400).json({ message: err })
+    }
+}
+
 async function addSuv(req,res,next){
-/* #swagger.tags=['Suv'] */
+/* #swagger.tags=['SUVs'] */
   try {
     const suvModel = await getSuvModel();
     const suv = {
@@ -32,7 +44,7 @@ async function addSuv(req,res,next){
 };
 
 async function deleteSuv(req,res,next){
-/* #swagger.tags=['Suv'] */
+/* #swagger.tags=['SUVs'] */
 try {
     const suvId = new ObjectId(req.params.id);
 
