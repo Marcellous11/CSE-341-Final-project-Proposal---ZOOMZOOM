@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import { getTruckModel } from "../data/db.js";
+import {ObjectId} from 'mongodb'
 
 async function getAllTrucks(req, res) {
     //#swagger.tags=['Trucks']
