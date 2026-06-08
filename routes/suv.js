@@ -1,13 +1,15 @@
 import { Router } from "express";
 import { validate, carValidationRules } from '../middleware/validator.js'
 import {
-  addSuv,
-  deleteSuv
+    getAllSuvs,
+    addSuv,
+    deleteSuv
 } from "../controllers/suv.js";
 import { isAthenicated } from '../middleware/authenicate.js'
 
 const suvRoutes = Router();
 
+suvRoutes.get("/", getAllSuvsuv);
 suvRoutes.post("/", addSuv);
 suvRoutes.delete("/:id", deleteSuv);
 
