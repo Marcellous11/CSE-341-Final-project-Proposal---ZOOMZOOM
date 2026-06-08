@@ -32,7 +32,7 @@ async function addSuv(req,res,next){
 };
 
 async function deleteSuv(req,res,next){
-/* #swagger.tags=['suv'] */
+/* #swagger.tags=['Suv'] */
 try {
     const suvId = new ObjectId(req.params.id);
 
