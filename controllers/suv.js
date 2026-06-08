@@ -64,4 +64,4 @@ try {
   }
 };
 
-export { addSuv, deleteSuv }
+export { getAllSuvs, addSuv, deleteSuv }
