@@ -100,7 +100,7 @@ try {
 
     const truckModel = await getTruckModel();
 
-    const response = await truckModel.deleteOne({ _id: carId });
+    const response = await truckModel.deleteOne({ _id: truckId });
 
     if (response.deletedCount > 0) {
       res.status(204).send();
