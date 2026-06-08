@@ -478,7 +478,7 @@
     "/suv/{id}": {
       "delete": {
         "tags": [
-          "suv"
+          "Suv"
         ],
         "description": "",
         "parameters": [
