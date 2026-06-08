@@ -64,4 +64,54 @@ async function updateTruck(req, res) {
     }
 }
 
-export { getAllTrucks, getOneTruck, updateTruck }
+async function addTruck(req,res,next){
+/* #swagger.tags=['Trucks'] */
+  try {
+    const truckModel = await getTruckModel();
+    const truck = {
+      make: req.body.make,
+      model: req.body.model,
+      year: req.body.year,
+      miles: req.body.miles,
+      color: req.body.color,
+      drive_type: req.body.drive_type,
+      new: req.body.new,
+      country: req.body.country,
+    };
+
+    const response = await truckModel.create(truck);
+
+    if (response && response._id) {
+      res.status(201).send();
+    } else {
+      res
+        .status(500)
+        .json({error: "Some error occured while creating user"});
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+async function deleteTruck(req,res,next){
+/* #swagger.tags=['Trucks'] */
+try {
+    const truckId = new ObjectId(req.params.id);
+
+    const truckModel = await getTruckModel();
+
+    const response = await truckModel.deleteOne({ _id: carId });
+
+    if (response.deletedCount > 0) {
+      res.status(204).send();
+    } else {
+      res
+        .status(500)
+        .json(Response.error || "Some error occured while creating user");
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export { getAllTrucks, getOneTruck, updateTruck, addTruck, deleteTruck }
