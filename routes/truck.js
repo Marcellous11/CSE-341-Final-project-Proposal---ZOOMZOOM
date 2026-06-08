@@ -14,7 +14,7 @@ const truckRoutes = Router();
 truckRoutes.get("/", getAllTrucks)
 truckRoutes.get("/:id", getOneTruck)
 truckRoutes.put("/:id", isAthenicated, carValidationRules(), validate, updateTruck)
-carRoutes.post("/", addTruck);
-carRoutes.delete("/:id", deleteTruck);
+truckRoutes.post("/", addTruck);
+truckRoutes.delete("/:id", deleteTruck);
 
 export { truckRoutes };
