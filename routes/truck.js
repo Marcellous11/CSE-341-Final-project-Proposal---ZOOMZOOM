@@ -7,13 +7,13 @@ import {
   addTruck,
   deleteTruck
 } from "../controllers/truck.js";
-import { isAthenicated } from '../middleware/authenicate.js'
+import { isAuthenticated } from '../middleware/authenicate.js'
 
 const truckRoutes = Router();
 
 truckRoutes.get("/", getAllTrucks)
 truckRoutes.get("/:id", getOneTruck)
-truckRoutes.put("/:id", isAthenicated, carValidationRules(), validate, updateTruck)
+truckRoutes.put("/:id", isAuthenticated, carValidationRules(), validate, updateTruck)
 truckRoutes.post("/", addTruck);
 truckRoutes.delete("/:id", deleteTruck);
 
