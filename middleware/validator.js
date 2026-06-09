@@ -21,5 +21,22 @@ const carValidationRules = () => {
   ]
 }
 
+const registerValidationRules = () => {
+  return [
+    body('user_name').trim().notEmpty().withMessage("Username is required"),
+    body('user_password')
+      .isLength({ min: 6 })
+      .withMessage("Password must be at least 6 characters"),
+    body('email').optional().isEmail().withMessage("Email must be valid"),
+  ]
+}
 
-export {validate,carValidationRules}
+const loginValidationRules = () => {
+  return [
+    body('user_name').trim().notEmpty().withMessage("Username is required"),
+    body('user_password').notEmpty().withMessage("Password is required"),
+  ]
+}
+
+
+export {validate,carValidationRules,registerValidationRules,loginValidationRules}

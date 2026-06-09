@@ -16,9 +16,13 @@ const vehicleSchema = mongoose.Schema(
 
 const userSchema = mongoose.Schema(
     {
-        user_id: Number,
-        user_name: String,
-        user_password: String,
+        user_name: { type: String, required: true, unique: true },
+        user_password: { type: String, required: true },
+        first_name: String,
+        last_name: String,
+        email: String,
+        favorite_vehicle: String,
+        created_at: { type: Date, default: Date.now }
     }
 )
 

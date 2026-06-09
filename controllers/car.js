@@ -4,6 +4,7 @@ import {ObjectId} from 'mongodb'
 
 async function getAllCars(req, res) {
     //#swagger.tags=['Cars']
+    /* #swagger.security = [{ "BearerAuth": [] }] */
     try {
         const carModel = await getCarModel()
         console.log(carModel)
@@ -18,6 +19,7 @@ async function getAllCars(req, res) {
 
 async function getOneCar(req, res) {
     //#swagger.tags=['Cars']
+    /* #swagger.security = [{ "BearerAuth": [] }] */
     try {
         if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
             return res.status(400).json('Must use a valid ID.')
@@ -39,6 +41,7 @@ async function getOneCar(req, res) {
 
 async function updateCar(req, res) {
     //#swagger.tags=['Cars']
+    /* #swagger.security = [{ "BearerAuth": [] }] */
     try {
         if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
             return res.status(400).json('Must use a valid ID.')
@@ -70,6 +73,7 @@ async function updateCar(req, res) {
 
 async function addCar(req,res,next){
 /* #swagger.tags=['Cars'] */
+/* #swagger.security = [{ "BearerAuth": [] }] */
   try {
     const carModel = await getCarModel();
     const car = {
@@ -99,6 +103,7 @@ async function addCar(req,res,next){
 
 async function deleteCar(req,res,next){
 /* #swagger.tags=['Cars'] */
+/* #swagger.security = [{ "BearerAuth": [] }] */
 try {
     const carId = new ObjectId(req.params.id);
 

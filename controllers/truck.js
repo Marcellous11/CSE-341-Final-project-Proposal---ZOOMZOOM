@@ -4,6 +4,7 @@ import {ObjectId} from 'mongodb'
 
 async function getAllTrucks(req, res) {
     //#swagger.tags=['Trucks']
+    /* #swagger.security = [{ "BearerAuth": [] }] */
     try {
         const truckModel = await getTruckModel()
         const trucks = await truckModel.find()
@@ -16,6 +17,7 @@ async function getAllTrucks(req, res) {
 
 async function getOneTruck(req, res) {
     //#swagger.tags=['Trucks']
+    /* #swagger.security = [{ "BearerAuth": [] }] */
     try {
         if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
             return res.status(400).json('Must use a valid ID.')
@@ -36,6 +38,7 @@ async function getOneTruck(req, res) {
 
 async function updateTruck(req, res) {
     //#swagger.tags=['Trucks']
+    /* #swagger.security = [{ "BearerAuth": [] }] */
     try {
         if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
             return res.status(400).json('Must use a valid ID.')
@@ -67,6 +70,7 @@ async function updateTruck(req, res) {
 
 async function addTruck(req,res,next){
 /* #swagger.tags=['Trucks'] */
+/* #swagger.security = [{ "BearerAuth": [] }] */
   try {
     const truckModel = await getTruckModel();
     const truck = {
@@ -96,6 +100,7 @@ async function addTruck(req,res,next){
 
 async function deleteTruck(req,res,next){
 /* #swagger.tags=['Trucks'] */
+/* #swagger.security = [{ "BearerAuth": [] }] */
 try {
     const truckId = new ObjectId(req.params.id);
 
