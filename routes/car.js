@@ -7,14 +7,14 @@ import {
   getOneCar,
   updateCar
 } from "../controllers/car.js";
-import {isAthenicated} from '../middleware/authenicate.js'
+import {isAuthenticated} from '../middleware/authenicate.js'
 
 const carRoutes = Router();
 
 carRoutes.get("/", getAllCars)
 carRoutes.get("/:id", getOneCar)
-carRoutes.put("/:id", isAthenicated, carValidationRules(), validate, updateCar)
-carRoutes.post("/",isAthenicated, carValidationRules(),validate,addCar);
-carRoutes.delete("/:id", isAthenicated, deleteCar);
+carRoutes.put("/:id", isAuthenticated, carValidationRules(), validate, updateCar)
+carRoutes.post("/",isAuthenticated, carValidationRules(),validate,addCar);
+carRoutes.delete("/:id", isAuthenticated, deleteCar);
 
 export { carRoutes };
