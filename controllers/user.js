@@ -20,8 +20,8 @@ async function addUser(req,res,next){
     const userModel = await getUserModel();
     const user = {
       user_id: req.body.user_id,
-      name: req.body.user_name,
-      password: req.body.user_password,
+      user_name: req.body.user_name,
+      user_password: req.body.user_password,
     };
 
     const response = await userModel.create(user);

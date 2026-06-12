@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {validate,carValidationRules} from '../middleware/validator.js'
+import { validate } from '../middleware/validator.js'
 import {
     addUser,
     deleteUser,
@@ -11,7 +11,7 @@ const userRoutes = Router();
 
 userRoutes.get("/", getAllUsers);
 // userRoutes.get("/:id", )
-// userRoutes.put("/:id", isAuthenticated, carValidationRules(), validate, )
+// userRoutes.put("/:id", isAuthenticated, validate, )
 userRoutes.post("/",isAuthenticated, validate, addUser);
 userRoutes.delete("/:id", isAuthenticated, deleteUser);
 
