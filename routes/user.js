@@ -11,7 +11,7 @@ const userRoutes = Router();
 // userRoutes.get("/", )
 // userRoutes.get("/:id", )
 // userRoutes.put("/:id", isAuthenticated, carValidationRules(), validate, )
-userRoutes.post("/",isAuthenticated, carValidationRules(),validate,addUser);
+userRoutes.post("/",isAuthenticated, addUser);
 userRoutes.delete("/:id", isAuthenticated, deleteUser);
 
 export { userRoutes };

@@ -1,18 +1,15 @@
-import {getUserModel} from '../data/db.js'
+import mongoose from 'mongoose'
+import { getUserModel } from '../data/db.js'
+import { ObjectId } from 'mongodb'
 
 async function addUser(req,res,next){
 /* #swagger.tags=['Users'] */
   try {
     const userModel = await getUserModel();
     const user = {
-      make: req.body.make,
-      model: req.body.model,
-      year: req.body.year,
-      miles: req.body.miles,
-      color: req.body.color,
-      drive_type: req.body.drive_type,
-      new: req.body.new,
-      country: req.body.country,
+      user_id: req.body.user_id,
+      name: req.body.user_name,
+      password: req.body.user_password,
     };
 
     const response = await userModel.create(user);
@@ -51,4 +48,4 @@ try {
 };
 
 
-export { deleteUser , addUser}
+export { deleteUser , addUser }

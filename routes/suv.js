@@ -14,7 +14,7 @@ const suvRoutes = Router();
 suvRoutes.get("/", getAllSuvs);
 suvRoutes.get("/:id", getOneSuv);
 suvRoutes.put("/:id", isAuthenticated, carValidationRules(), validate, updateSuv);
-suvRoutes.post("/", addSuv);
-suvRoutes.delete("/:id", deleteSuv);
+suvRoutes.post("/", isAuthenticated, carValidationRules(), validate, addSuv);
+suvRoutes.delete("/:id", isAuthenticated, deleteSuv);
 
 export { suvRoutes };

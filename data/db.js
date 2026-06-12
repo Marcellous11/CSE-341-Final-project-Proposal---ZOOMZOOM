@@ -1,4 +1,8 @@
 import mongoose from 'mongoose'
+import { setServers } from 'node:dns/promises';
+
+// Set public DNS servers
+setServers(['1.1.1.1', '8.8.8.8']);
 
 const vehicleSchema = mongoose.Schema(
     {
