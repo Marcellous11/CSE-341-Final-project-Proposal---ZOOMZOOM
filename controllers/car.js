@@ -90,7 +90,7 @@ async function addCar(req,res,next){
     } else {
       res
         .status(500)
-        .json({error: "Some error occured while creating user"});
+        .json({error: "Some error occured while adding car"});
     }
   } catch (err) {
     next(err);
@@ -111,7 +111,7 @@ try {
     } else {
       res
         .status(500)
-        .json(Response.error || "Some error occured while creating user");
+        .json(Response.error || "Some error occured while deleting car");
     }
   } catch (err) {
     next(err);

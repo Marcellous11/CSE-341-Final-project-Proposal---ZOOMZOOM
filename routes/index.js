@@ -1,5 +1,6 @@
 import {Router} from 'express'
 import {carRoutes} from './car.js'
+import {userRoutes} from './user.js'
 import {truckRoutes} from './truck.js'
 import { suvRoutes } from './suv.js'
 import swaggerUi from 'swagger-ui-express'
@@ -11,13 +12,7 @@ const router = Router()
 router.use('/api-docs',swaggerUi.serve)
 router.get('/api-docs', swaggerUi.setup(swaggerDocument))
 
-//import truckRouter from './truck.js'
-//import userRouter from './user.js'
-//import suvRouter from './suv.js'
-
-//router.use("/truck", truckRouter)
-//router.use("/user", userRouter)
-//router.use("/suv", suvRouter)
+router.use("/user", userRoutes)
 router.use("/car",carRoutes)
 router.use("/truck",truckRoutes)
 router.use("/suv",suvRoutes)
