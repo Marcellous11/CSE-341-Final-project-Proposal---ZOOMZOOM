@@ -6,9 +6,7 @@ async function getAllCars(req, res) {
     //#swagger.tags=['Cars']
     try {
         const carModel = await getCarModel()
-        console.log(carModel)
         const cars = await carModel.find()
-        console.log(cars)
         res.setHeader('Content-Type', 'application/json')
         res.status(200).json(cars)
     } catch (err) {

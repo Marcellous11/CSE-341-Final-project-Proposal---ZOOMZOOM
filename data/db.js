@@ -28,7 +28,7 @@ const Suv = mongoose.model("suv",vehicleSchema)
 const User = mongoose.model("user",userSchema)
 
 async function ConnectDatabase(){
-    await mongoose.connect(process.env.MONGOOSE_URI)
+    await mongoose.connect(process.env.MONGOOSE_URI, { maxPoolSize: 1 })
     console.log("Database connected")
 
 }

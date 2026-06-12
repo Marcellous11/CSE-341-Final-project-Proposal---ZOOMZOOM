@@ -68,15 +68,19 @@ app.use((err,req,res,next)=>{
     res.status(status).json({error:err.message})
 })
 
-ConnectDatabase().then(()=>{
-    app.listen(port,()=>{
-        console.log(`Connected at port ${port}`)
-    })
-}).catch((err)=>{
-    console.log(`Start up failure. ${err}`)
-    process.exit(1)
+export { app }
 
-})
+if (process.env.NODE_ENV !== 'test') {
+    ConnectDatabase().then(()=>{
+        app.listen(port,()=>{
+            console.log(`Connected at port ${port}`)
+        })
+    }).catch((err)=>{
+        console.log(`Start up failure. ${err}`)
+        process.exit(1)
+
+    })
+}
 
 async function gracefulShutdown(){
     console.log('Shuting down...')
@@ -86,4 +90,4 @@ async function gracefulShutdown(){
 }
 
 process.on('SIGINT',gracefulShutdown)
-process.on('SIGTERM',gracefulShutdown)
+process.on('SIGTERM', gracefulShutdown)
