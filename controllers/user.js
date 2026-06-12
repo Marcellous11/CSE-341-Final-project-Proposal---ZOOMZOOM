@@ -14,6 +14,52 @@ async function getAllUsers(req, res) {
     }
 }
 
+async function getOneUser(req, res) {
+    //#swagger.tags=['Users']
+    try {
+        if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+            return res.status(400).json('Must use a valid ID.')
+        }
+        const userModel = await getUserModel()
+        const user = await userModel.findById(req.params.id)
+
+        if (!user) {
+            return res.status(404).json('This user is not found in the database.')
+        }
+
+        res.setHeader('Content-Type', 'application/json')
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(400).json({ message: err })
+    }
+        
+}
+
+async function updateUser(req, res) {
+    //#swagger.tags=['Users']
+    try {
+        if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+            return res.status(400).json('Must use a valid ID.')
+        }
+        const userModel = await getUserModel()
+        const user = {
+            user_id: req.body.user_id,
+            user_name: req.body.user_name,
+            user_password: req.body.user_password
+        }
+        const response = await userModel.findByIdAndUpdate(req.params.id, user, {
+            runValidators: true
+        })
+        if (response) {
+            res.status(204).send()
+        } else {
+            res.status(404).json('This user is not found in the database, so it cannot be updated.')
+        }
+    } catch (err) {
+        res.status(500).json(err.message || 'Some error occurred while updating the user.')
+    }
+}
+
 async function addUser(req,res,next){
 /* #swagger.tags=['Users'] */
   try {
@@ -52,7 +98,7 @@ try {
     } else {
       res
         .status(500)
-        .json(Response.error || "Some error occured while deleting car");
+        .json(Response.error || "Some error occured while deleting user");
     }
   } catch (err) {
     next(err);
@@ -60,4 +106,4 @@ try {
 };
 
 
-export { getAllUsers, deleteUser , addUser }
+export { getAllUsers, deleteUser , addUser, getOneUser, updateUser }
