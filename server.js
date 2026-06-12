@@ -68,6 +68,8 @@ app.use((err,req,res,next)=>{
     res.status(status).json({error:err.message})
 })
 
+export { app }
+
 ConnectDatabase().then(()=>{
     app.listen(port,()=>{
         console.log(`Connected at port ${port}`)
@@ -86,4 +88,4 @@ async function gracefulShutdown(){
 }
 
 process.on('SIGINT',gracefulShutdown)
-process.on('SIGTERM',gracefulShutdown)
+process.on('SIGTERM', gracefulShutdown)
