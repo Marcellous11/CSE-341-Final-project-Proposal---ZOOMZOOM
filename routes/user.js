@@ -3,15 +3,17 @@ import { validate } from '../middleware/validator.js'
 import {
     addUser,
     deleteUser,
-    getAllUsers
+    getAllUsers,
+    getOneUser,
+    updateUser
 } from "../controllers/user.js";
 import {isAuthenticated} from '../middleware/authenicate.js'
 
 const userRoutes = Router();
 
 userRoutes.get("/", getAllUsers);
-// userRoutes.get("/:id", )
-// userRoutes.put("/:id", isAuthenticated, validate, )
+userRoutes.get("/:id", getOneUser);
+userRoutes.put("/:id", isAuthenticated, validate, updateUser);
 userRoutes.post("/",isAuthenticated, validate, addUser);
 userRoutes.delete("/:id", isAuthenticated, deleteUser);
 
