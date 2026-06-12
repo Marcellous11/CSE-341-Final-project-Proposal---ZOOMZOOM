@@ -2,6 +2,18 @@ import mongoose from 'mongoose'
 import { getUserModel } from '../data/db.js'
 import { ObjectId } from 'mongodb'
 
+async function getAllUsers(req, res) {
+    //#swagger.tags=['Users']
+    try {
+        const userModel = await getUserModel()
+        const users = await userModel.find()
+        res.setHeader('Content-Type', 'application/json')
+        res.status(200).json(users)
+    } catch (err) {
+        res.status(400).json({ message: err })
+    }
+}
+
 async function addUser(req,res,next){
 /* #swagger.tags=['Users'] */
   try {
@@ -48,4 +60,4 @@ try {
 };
 
 
-export { deleteUser , addUser }
+export { getAllUsers, deleteUser , addUser }
