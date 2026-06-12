@@ -1,7 +1,7 @@
 import {getUserModel} from '../data/db.js'
 
 async function addUser(req,res,next){
-/* #swagger.tags=['Cars'] */
+/* #swagger.tags=['Users'] */
   try {
     const userModel = await getUserModel();
     const user = {
@@ -30,7 +30,7 @@ async function addUser(req,res,next){
 };
 
 async function deleteUser(req,res,next){
-/* #swagger.tags=['Cars'] */
+/* #swagger.tags=['Users'] */
 try {
     const userId = new ObjectId(req.params.id);
 
