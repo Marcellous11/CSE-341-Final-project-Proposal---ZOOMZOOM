@@ -83,7 +83,7 @@ async function addTruck(req,res,next){
     const response = await truckModel.create(truck);
 
     if (response && response._id) {
-      res.status(201).send();
+      res.status(201).json({ id: response._id });
     } else {
       res
         .status(500)
