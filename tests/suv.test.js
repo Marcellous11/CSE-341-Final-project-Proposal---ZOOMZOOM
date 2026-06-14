@@ -17,3 +17,21 @@ describe('Test getAll for suvs', () => {
         expect(res.statusCode).toBe(200)
     })
 })
+
+describe('Test getById for suvs', () => {
+    it('Returns a 200 status', async () => {
+        const res = await request(app).get(`/suv/6a22457dcd3370fe157f5616`)
+        expect(res.statusCode).toBe(200)
+    })
+
+    it('Returns a 400 status for an invalid id', async () => {
+        const res = await request(app).get('/suv/not-a-valid-id')
+        expect(res.statusCode).toBe(400)
+    })
+
+    it('Returns a 404 status when the suv is not found', async () => {
+        // Well-formed ObjectId that does not exist in the database.
+        const res = await request(app).get('/suv/000000000000000000000000')
+        expect(res.statusCode).toBe(404)
+    })
+})
